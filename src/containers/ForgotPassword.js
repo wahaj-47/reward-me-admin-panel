@@ -1,5 +1,5 @@
 import React from "react";
-import "./admin.css";
+import "./login.css";
 import { Form, Button, Image } from "react-bootstrap";
 import Logo from "../logo.png";
 
