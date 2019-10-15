@@ -2,9 +2,8 @@ import React from "react";
 import "./admin.css";
 import { Form, Button, Image } from "react-bootstrap";
 import Logo from "../logo.png";
-import {Link } from "react-router-dom";
 
-export default class Login extends React.Component {
+export default class ForgotPassword extends React.Component {
 	state = {};
 
 	render() {
@@ -18,14 +17,10 @@ export default class Login extends React.Component {
 							<Form.Control type="email" placeholder="Enter email" />
 						</Form.Group>
 
-						<Form.Group controlId="formBasicPassword">
-							{/* <Form.Label>Password</Form.Label> */}
-							<Form.Control type="password" placeholder="Password" />
-						</Form.Group>
-						<Button href="/admin" className="loginbutton" variant="info" type="submit" size="lg" block>
-							Log In
+						
+						<Button href="/resetpassword" className="resetpassword" variant="info" type="submit" size="lg" block>
+							Send Verification Code
 						</Button>
-						<Link to="/forgotpassword">Forgot Password?</Link>
 					</Form>
 				</div>
 			</div>
