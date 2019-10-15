@@ -1,0 +1,13 @@
+html body {
+	background-color: black;
+}
+
+.logo {
+	width: 300px;
+	margin-bottom: 50px;
+}
+
+.form {
+	width: 400px;
+	margin: 80px auto;
+}
