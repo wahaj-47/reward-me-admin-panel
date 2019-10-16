@@ -31,9 +31,13 @@ export default class Notice extends React.Component {
 						<Jumbotron fluid>
 							<Container>
 								<Dropdown as={ButtonGroup}>
-									<Button>{this.state.noticeType}</Button>
+									<Button variant="secondary">{this.state.noticeType}</Button>
 
-									<Dropdown.Toggle split id="dropdown-split-basic" />
+									<Dropdown.Toggle
+										variant="secondary"
+										split
+										id="dropdown-split-basic"
+									/>
 
 									<Dropdown.Menu>
 										<Dropdown.Item
@@ -72,6 +76,9 @@ export default class Notice extends React.Component {
 										<FormControl as="textarea" aria-label="With textarea" />
 									</InputGroup>
 								)}
+								<Button className="mt-3" block variant="secondary">
+									Send
+								</Button>
 							</Container>
 						</Jumbotron>
 					</div>
