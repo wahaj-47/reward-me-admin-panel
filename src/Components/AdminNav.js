@@ -11,7 +11,7 @@ export default class AdminNav extends React.Component {
 				<Navbar.Brand href="#home">Admin Panel</Navbar.Brand>
 				<Nav className="mr-auto">
 					<Nav.Link href="/slots">Slots</Nav.Link>
-					<Nav.Link href="#features">Notices</Nav.Link>
+					<Nav.Link href="/notice">Notices</Nav.Link>
 				</Nav>
 				<Nav>
 					<Nav.Link href="/">Log out</Nav.Link>

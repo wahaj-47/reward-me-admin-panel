@@ -2,9 +2,6 @@ import React from "react";
 import "./Slots.css";
 
 import { Table, InputGroup, FormControl } from "react-bootstrap";
-import Routes from "../Routes";
-import Logo from "../logo.png";
-import { Link } from "react-router-dom";
 import AdminNav from "../Components/AdminNav";
 
 export default class Slots extends React.Component {
