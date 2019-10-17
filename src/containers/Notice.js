@@ -5,6 +5,7 @@ import {
 	Jumbotron,
 	Container,
 	Dropdown,
+	DropdownButton,
 	Button,
 	ButtonGroup,
 	InputGroup,
@@ -31,15 +32,19 @@ export default class Notice extends React.Component {
 						<Jumbotron fluid>
 							<Container>
 								<Dropdown as={ButtonGroup}>
-									<Button variant="secondary">{this.state.noticeType}</Button>
+									{/* <Button variant="secondary">{this.state.noticeType}</Button> */}
 
-									<Dropdown.Toggle
+									{/* <Dropdown.Toggle
 										variant="secondary"
-										split
 										id="dropdown-split-basic"
-									/>
+									>
+										{this.state.noticeType}
+									</Dropdown.Toggle> */}
 
-									<Dropdown.Menu>
+									<DropdownButton
+										title={this.state.noticeType}
+										variant="secondary"
+									>
 										<Dropdown.Item
 											eventKey="General Notice"
 											onSelect={this.handleNoticeType}
@@ -52,9 +57,9 @@ export default class Notice extends React.Component {
 										>
 											Personal Notice
 										</Dropdown.Item>
-									</Dropdown.Menu>
+									</DropdownButton>
 								</Dropdown>
-								{this.state.noticeType == "Personal Notice" && (
+								{this.state.noticeType === "Personal Notice" && (
 									<InputGroup className="mt-3">
 										<InputGroup.Prepend>
 											<InputGroup.Text>Select Users</InputGroup.Text>
