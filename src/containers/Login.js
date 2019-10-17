@@ -3,42 +3,36 @@ import axios from "axios";
 import "./login.css";
 import { Form, Button, Image } from "react-bootstrap";
 import Logo from "../logo.png";
-import { Redirect, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default class Login extends React.Component {
-	state = { email: "", password: "", redirect: false };
+	state = { email: "", password: "" };
 
 	handleEmailChange = value => {
-		console.log(this.state.email);
 		this.setState({ email: value });
 	};
 
 	handlePasswordChange = value => {
-		console.log(this.state.password);
 		this.setState({ password: value });
 	};
 
-	login = () => {
-		axios
-			.post("/admin/login", {
-				email: this.state.email,
-				password: this.state.password
-			})
-			.then(response => {
-				if (response.data.loginSuccess)
-					this.setState({ redirect: true, token: response.data.token });
-				else console.log(response.data);
-			});
+	login = async event => {
+		event.preventDefault();
+		let response = await axios.post("/admin/login", {
+			email: this.state.email,
+			password: this.state.password
+		});
+		if (response.data.loginSuccess) {
+			this.props.history.push("/dashboard", { token: response.data.token });
+		}
 	};
 
 	render() {
-		const { redirect, token } = this.state;
-
 		return (
 			<div className="container">
 				<div className="form">
 					<Image src={Logo} className="logo" />
-					<Form onSubmit={this.login}>
+					<Form onSubmit={event => this.login(event)}>
 						<Form.Group controlId="formBasicEmail">
 							{/* <Form.Label>Email address</Form.Label> */}
 							<Form.Control

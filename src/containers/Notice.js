@@ -11,7 +11,6 @@ import {
 	InputGroup,
 	FormControl
 } from "react-bootstrap";
-import AdminNav from "../Components/AdminNav";
 
 export default class Notice extends React.Component {
 	state = { noticeType: "Notice Type" };
@@ -23,7 +22,6 @@ export default class Notice extends React.Component {
 	render() {
 		return (
 			<div>
-				<AdminNav></AdminNav>
 				<div className="container">
 					<div className="mt-5">
 						<h1>
@@ -32,15 +30,6 @@ export default class Notice extends React.Component {
 						<Jumbotron fluid>
 							<Container>
 								<Dropdown as={ButtonGroup}>
-									{/* <Button variant="secondary">{this.state.noticeType}</Button> */}
-
-									{/* <Dropdown.Toggle
-										variant="secondary"
-										id="dropdown-split-basic"
-									>
-										{this.state.noticeType}
-									</Dropdown.Toggle> */}
-
 									<DropdownButton
 										title={this.state.noticeType}
 										variant="secondary"
