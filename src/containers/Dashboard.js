@@ -1,5 +1,6 @@
 import React from "react";
-import { Navbar, Nav } from "react-bootstrap";
+import "./Dashboard.css";
+import { Navbar, Nav, Row, Col, Container } from "react-bootstrap";
 import Slots from "./Slots";
 import Notice from "./Notice";
 import { Redirect } from "react-router-dom";
@@ -25,30 +26,25 @@ export default class Dashboard extends React.Component {
 			<div>
 				<Navbar bg="dark" variant="dark">
 					<Navbar.Brand href="#home">Admin Panel</Navbar.Brand>
-					<Nav
-						activeKey="/Slots"
-						className="mr-auto"
-						onSelect={selectedKey => {
-							this.setState({ tab: selectedKey });
-						}}
-					>
-						<Nav.Link eventKey="Slots" className="navlink" selected>
-							Slots
-						</Nav.Link>
-						<Nav.Link eventKey="Notice" className="navlink">
-							Notice
-						</Nav.Link>
-					</Nav>
 					<Nav className="ml-auto">
 						<Nav.Link href="/" className="navlink">
 							Log out
 						</Nav.Link>
 					</Nav>
 				</Navbar>
-				{this.state.tab === "Slots" && <Slots token={this.state.token}></Slots>}
-				{this.state.tab === "Notice" && (
-					<Notice token={this.state.token}></Notice>
-				)}
+				<Container fluid>
+					<Row>
+						<Col md={8} sm={12}>
+							<div>
+								<h1>Analytics goes here</h1>
+							</div>
+						</Col>
+						<Col md={4} sm={12}>
+							<Notice token={this.state.token}></Notice>
+							<Slots token={this.state.token}></Slots>
+						</Col>
+					</Row>
+				</Container>
 			</div>
 		);
 	}

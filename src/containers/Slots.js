@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import Loader from "react-loader-spinner";
 import "./Slots.css";
-import { Table, InputGroup, FormControl } from "react-bootstrap";
+import { Table, InputGroup, FormControl, Badge } from "react-bootstrap";
 
 export default class Slots extends React.Component {
 	state = {};
@@ -46,43 +46,48 @@ export default class Slots extends React.Component {
 							<Loader type="Oval" color="#00BFFF" height={100} width={100} />
 						</div>
 					) : (
-						<Table striped bordered variant="dark" className="mt-5">
-							<thead>
-								<tr>
-									<th>Slot Number</th>
-									<th>Slot Value</th>
-								</tr>
-							</thead>
-							<tbody>
-								{slots.map(slot => {
-									return (
-										<tr key={slot.slot_id}>
-											<td>{slot.slot_id}</td>
-											<td>
-												<InputGroup size="sm">
-													<InputGroup.Prepend>
-														<InputGroup.Text>$</InputGroup.Text>
-													</InputGroup.Prepend>
-													<FormControl
-														id={slot.slot_id}
-														type="number"
-														aria-label="Amount (to the nearest dollar)"
-														placeholder={slot.slot_value}
-														min="1"
-														onChange={event => {
-															this.handleSlotChange(
-																event.target.id,
-																event.target.value
-															);
-														}}
-													/>
-												</InputGroup>
-											</td>
-										</tr>
-									);
-								})}
-							</tbody>
-						</Table>
+						<div className="mt-5">
+							<h1>
+								<Badge variant="dark">Edit Slots</Badge>
+							</h1>
+							<Table striped bordered variant="dark">
+								<thead>
+									<tr>
+										<th>Slot Number</th>
+										<th>Slot Value</th>
+									</tr>
+								</thead>
+								<tbody>
+									{slots.map(slot => {
+										return (
+											<tr key={slot.slot_id}>
+												<td>{slot.slot_id}</td>
+												<td>
+													<InputGroup size="sm">
+														<InputGroup.Prepend>
+															<InputGroup.Text>$</InputGroup.Text>
+														</InputGroup.Prepend>
+														<FormControl
+															id={slot.slot_id}
+															type="number"
+															aria-label="Amount (to the nearest dollar)"
+															placeholder={slot.slot_value}
+															min="1"
+															onChange={event => {
+																this.handleSlotChange(
+																	event.target.id,
+																	event.target.value
+																);
+															}}
+														/>
+													</InputGroup>
+												</td>
+											</tr>
+										);
+									})}
+								</tbody>
+							</Table>
+						</div>
 					)}
 				</div>
 			</div>
