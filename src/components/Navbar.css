@@ -1,0 +1,12 @@
+.active {
+	border: red;
+}
+
+.navlink {
+	border: 1px solid #c9c9c9;
+	border-radius: 0.5em;
+}
+
+.navlinkCustom {
+	margin-left: 0.7em;
+}

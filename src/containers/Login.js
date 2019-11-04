@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import "./login.css";
 import { Form, Button, Image } from "react-bootstrap";
-import Logo from "../logo.png";
+import Logo from "../logo2.png";
 import { Link } from "react-router-dom";
 
 export default class Login extends React.Component {
@@ -18,12 +18,19 @@ export default class Login extends React.Component {
 
 	login = async event => {
 		event.preventDefault();
-		let response = await axios.post("/admin/login", {
+		let response = await axios.post("/rewardMe/admin/login", {
 			email: this.state.email,
 			password: this.state.password
 		});
+		console.log(response.data);
 		if (response.data.loginSuccess) {
-			this.props.history.push("/dashboard", { token: response.data.token });
+			sessionStorage.setItem("token", response.data.token);
+			this.props.history.push(`${process.env.PUBLIC_URL}/slots`);
+		} else {
+			this.setState({ incorrect: true });
+			setTimeout(() => {
+				this.setState({ incorrect: false });
+			}, 1000);
 		}
 	};
 
@@ -54,6 +61,11 @@ export default class Login extends React.Component {
 								value={this.state.password}
 							/>
 						</Form.Group>
+						{this.state.incorrect && (
+							<Form.Text style={{ color: "red" }}>
+								Incorrect email or password
+							</Form.Text>
+						)}
 						<Button
 							// href="/slots"
 							className="loginbutton"
@@ -64,7 +76,9 @@ export default class Login extends React.Component {
 						>
 							Log In
 						</Button>
-						<Link to="/forgotpassword">Forgot Password?</Link>
+						<Link to={`${process.env.PUBLIC_URL}/forgotpassword`}>
+							Forgot Password?
+						</Link>
 					</Form>
 				</div>
 			</div>
